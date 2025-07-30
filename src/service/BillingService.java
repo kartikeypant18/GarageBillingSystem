@@ -10,12 +10,9 @@ public class BillingService {
     public InvoiceService invoiceService = new InvoiceService();
 
     public void createInvoice(int customerId, int vehicleId, List<Integer> serviceIds) throws SQLException {
-        String sids="";
-        for (int serviceId : serviceIds) {
-           sids+=serviceId;
-        }
-        invoiceService.addInvoice(new Invoice(0, customerId, vehicleId, Integer.parseInt(sids)));
-        System.out.println("Invoice generated successfully.");
+        Invoice invoice = new Invoice(0, customerId, vehicleId, serviceIds);
+        int invoiceId = invoiceService.addInvoice(invoice);
+        System.out.println("Invoice #" + invoiceId + " generated successfully with " + serviceIds.size() + " services.");
     }
     public void showAllInvoices() throws SQLException {
         List<Invoice> invoices = invoiceService.getAllInvoices();

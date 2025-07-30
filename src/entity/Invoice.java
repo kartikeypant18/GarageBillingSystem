@@ -1,16 +1,25 @@
 package entity;
+import java.util.List;
 
 public class Invoice {
     private int id;
     private int customerId;
     private int vechicleId;
-    private int serviceId;
+    private List<Integer> serviceIds;
 
-    public Invoice(int id, int customerId, int vechicleId, int serviceId) {
+    public Invoice(int id, int customerId, int vechicleId, List<Integer> serviceIds) {
         this.id = id;
         this.customerId = customerId;
         this.vechicleId = vechicleId;
-        this.serviceId = serviceId;
+        this.serviceIds = serviceIds;
+    }
+
+    public List<Integer> getServiceIds() {
+        return serviceIds;
+    }
+
+    public void setServiceIds(List<Integer> serviceIds) {
+        this.serviceIds = serviceIds;
     }
 
     public int getId() {
@@ -37,21 +46,8 @@ public class Invoice {
         this.vechicleId = vechicleId;
     }
 
-    public int getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
-    }
-
     @Override
     public String toString() {
-        return "Invoice[ " +
-                "id=" + id +
-                ", customerId= " + customerId +
-                ", vechicleId= " + vechicleId +
-                ", serviceId= "  + serviceId +
-                " ]";
+        return "Invoice [id=" + id + ", customerId=" + customerId + ", vechicleId=" + vechicleId + ", serviceIds=" + serviceIds + "]";
     }
 }
